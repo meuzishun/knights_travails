@@ -6,7 +6,7 @@ This project was completed in partial fulfillment of the curriculum of [The Odin
 
 Build a function that shows the shortest possible route between two points on an 8x8 chess board for a knight to travel. The function should accept two coordinates (arrays of two values) and return an array of coordinates indicating the shortest path.
 
-## Thoughts
+## Initial Thoughts
 
 Ok, I'm thinking that we should create a vertex class which takes coordinates and automatically generates other positions on the board (up to 8: NW, NE, EN, ES, SE, SW, WS, WN). Before generating each coordinate we first make sure that it doesn't spill off of the board (e.g. [-1, 5] or [3, 9]).
 
@@ -62,3 +62,46 @@ Let's make the game board; an array of rows, each of which is a position object.
 We need a find method on the game board so we can get a reference to the actual position.
 
 Ok, we got it figured out...
+
+## Environment Setup
+
+First things first... install npm and jest. Then change the settings and configuration. From the command line, run:
+
+```
+npm init
+```
+
+Then change the package.json file to set the type to module (put it just under the "name" key):
+
+```
+"type": "module"
+```
+
+Next install jest as a dev dependency:
+
+```
+npm install --save-dev jest
+```
+
+In order to get ES6 module syntax to work with jest, use babel...
+
+```
+npm install --save-dev babel-jest @babel/preset-env
+```
+
+...and then create a babel.config.cjs file:
+
+```
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
+      },
+    ],
+  ],
+};
+```

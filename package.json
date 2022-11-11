@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/meuzishun/knights_travails/issues"
   },
-  "homepage": "https://github.com/meuzishun/knights_travails#readme"
+  "homepage": "https://github.com/meuzishun/knights_travails#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1"
+  }
 }
