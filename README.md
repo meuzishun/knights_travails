@@ -105,3 +105,34 @@ module.exports = {
   ],
 };
 ```
+
+Remember to include a script to run jest tests:
+
+```
+"scripts": {
+  "test": "jest",
+  "watch": "jest --watch"
+}
+```
+
+## The actual code
+
+First let's create a function that checks whether or not a set of coordinates are on a chess board. First write some tests:
+
+```javascript
+test('checkLocation returns false when the location is off the board', () => {
+  expect(checkLocation([3, 9])).toBe(false);
+});
+
+test('checkLocation returns true when the location is on the board', () => {
+  expect(checkLocation([3, 7])).toBe(true);
+});
+```
+
+Here is the actual function:
+
+```javascript
+function checkLocation(coordinates) {
+  return coordinates.every((val) => val > -1 && val < 8);
+}
+```
