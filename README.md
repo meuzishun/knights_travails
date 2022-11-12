@@ -61,7 +61,7 @@ Let's make the game board; an array of rows, each of which is a position object.
 
 We need a find method on the game board so we can get a reference to the actual position.
 
-Ok, we got it figured out...
+Ok, we got it figured out... we need a queue! And to remember where each new position came from!
 
 ## Environment Setup
 
