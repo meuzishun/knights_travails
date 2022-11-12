@@ -171,3 +171,53 @@ function findMovesFrom(coordinates) {
   return locations;
 }
 ```
+
+Finally we will create the knightMoves function. Here are the tests we'll write first:
+
+```javascript
+test('knightMoves returns expected coordinates', () => {
+  expect(knightMoves([0, 0], [1, 2])).toMatchObject([
+    [0, 0],
+    [1, 2],
+  ]);
+});
+
+test('knightMoves returns expected coordinates', () => {
+  expect(knightMoves([0, 0], [3, 3])).toMatchObject([
+    [0, 0],
+    [1, 2],
+    [3, 3],
+  ]);
+});
+
+test('knightMoves returns expected coordinates', () => {
+  expect(knightMoves([3, 3], [0, 0])).toMatchObject([
+    [3, 3],
+    [1, 2],
+    [0, 0],
+  ]);
+});
+```
+
+And here is the function:
+
+```javascript
+function knightMoves(start, end) {
+  const queue = [];
+  const path = [start];
+  queue.push(path);
+
+  while (queue.length > 0) {
+    const path = queue.shift();
+
+    if (path.at(-1).toString() === end.toString()) {
+      return path;
+    }
+
+    const nextLevel = findMovesFrom(path.at(-1));
+    nextLevel.forEach((cell) => queue.push([...path, cell]));
+  }
+}
+```
+
+The challenge here was to use a queue for breadth-first traversal but make sure to arrays and push each new value to keep track of where each position had come from.
