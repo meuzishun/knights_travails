@@ -136,3 +136,9 @@ function checkLocation(coordinates) {
   return coordinates.every((val) => val > -1 && val < 8);
 }
 ```
+
+Next we'll write tests for a function that finds all possible moves for the knight from a given position:
+
+```javascript
+
+```
