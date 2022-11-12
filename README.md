@@ -140,5 +140,34 @@ function checkLocation(coordinates) {
 Next we'll write tests for a function that finds all possible moves for the knight from a given position:
 
 ```javascript
+test('findMovesFrom should return the correct values', () => {
+  expect(findMovesFrom([0, 0])).toMatchObject([
+    [1, 2],
+    [2, 1],
+  ]);
+});
+```
 
+Here is the actual function:
+
+```javascript
+function findMovesFrom(coordinates) {
+  const locations = [];
+  const moves = [
+    [1, 2],
+    [1, -2],
+    [-1, 2],
+    [-1, -2],
+    [2, 1],
+    [2, -1],
+    [-2, 1],
+    [-2, -1],
+  ];
+  moves.forEach((move) => {
+    const newCoords = [coordinates[0] + move[0], coordinates[1] + move[1]];
+    if (!checkLocation(newCoords)) return;
+    locations.push(newCoords);
+  });
+  return locations;
+}
 ```
